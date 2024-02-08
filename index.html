@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Converter</title>
+    <style>
+       
+      .container {
+        margin-left: 600px;
+        margin-top: 150px;
+        width: 400px;
+        height: 250px;
+        border-radius: 5px;
+        background-color: rgb(70, 69, 69);
+        border: 1px solid rgb(70, 69, 69);
+      }
+      .heading{
+        font-size: 35px;
+        text-align: center;
+      }
+      #indianTime{
+        font-size: 20px;
+        margin-left: 20px;
+      }
+      #input{
+        margin-left: 20px;
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+        border: 1px solid  rgb(70, 69, 69);
+      }
+      .btn{
+        width: 70px;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid  rgb(70, 69, 69);
+        background-color: rgb(41, 40, 40);
+      }
+      #mexicoTime{
+        margin-left: 20px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading">Time Converter</h2>
+        <p id="indianTime">Indian Time:</p>
+        <input type="text" id="input" placeholder="Enter the time">
+        <button class="btn" onclick="timeConverter()">Convert</button>
+        <p id="mexicoTime"></p>
+        <script>
+          function timeConverter() {
+            let time = document.getElementById("input").value;
+            let indianTime = new Date('2000-01-01' + time + ':00');
+            let mexicoTime = new Date(indianTime.getTime() - 11.5 * 60 * 60 * 1000);
+            let timeInString = mexicoTime.toLocaleTimeString({ hour: 'numeric', minute: 'numeric' });
+            document.getElementById('mexicoTime').innerHTML = ' The Mexican time is ' + timeInString;
+          }
+        </script>
+    </div>
+</body>
+</html>
